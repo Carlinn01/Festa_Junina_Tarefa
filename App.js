@@ -1,11 +1,10 @@
-// App.js
 import React from 'react';
 import { View, Text, TouchableOpacity, Image, ScrollView } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { StatusBar } from 'expo-status-bar';
 
-// Importa os estilos comuns
+// Importa os estilos comuns padrão do App
 import { commonStyles } from './constants/styles';
 
 // Importa as telas
@@ -20,12 +19,11 @@ function HomeScreen({ navigation }) {
     <ScrollView contentContainerStyle={commonStyles.container}>
       <StatusBar style="light" />
       <Image
-        source={{ uri: 'https://placehold.co/400x200/FFD700/8B4513?text=Festa+Junina+Escola' }}
+        source={{ uri: 'https://www.estadao.com.br/resizer/v2/ERQABUGGY5GEJJMXPNOAE6DTHQ.jpeg?quality=80&auth=41f8ca8e7306a611389ce44665daec5105a127f4f4f3ecd113615e5b09da5cf0&width=1075&height=527&focal=3164,2278' }}
         style={commonStyles.headerImage}
-        onError={(e) => console.log('Erro ao carregar imagem:', e.nativeEvent.error)}
       />
       <Text style={commonStyles.title}>🎉 Viva a Festa Junina! 🎉</Text>
-      <Text style={commonStyles.subtitle}>Sua Escola te convida para a melhor festa do ano!</Text>
+      <Text style={commonStyles.subtitle}>O IFC-Videira te convida para a melhor festa do ano!</Text>
 
       <TouchableOpacity
         style={commonStyles.button}
@@ -58,7 +56,7 @@ function HomeScreen({ navigation }) {
   );
 }
 
-// Configuração do Stack Navigator
+
 const Stack = createStackNavigator();
 
 export default function App() {
@@ -74,7 +72,7 @@ export default function App() {
           headerTitleStyle: {
             fontWeight: 'bold',
           },
-          headerTitleAlign: 'center', // Centraliza o título no cabeçalho
+          headerTitleAlign: 'center',
         }}
       >
         <Stack.Screen

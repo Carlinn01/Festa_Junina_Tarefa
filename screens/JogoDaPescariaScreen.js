@@ -2,7 +2,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, Dimensions, Animated, Alert } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
-import { commonStyles } from '../constants/styles'; // Importa estilos comuns
+import { commonStyles } from '../constants/styles'; // Importa estilos comuns padrão do app
 
 const { width, height } = Dimensions.get('window');
 
@@ -12,10 +12,11 @@ export default function JogoDaPescariaScreen() {
   const [gameStarted, setGameStarted] = useState(false);
   const gameInterval = useRef(null);
 
-  const fishEmojis = ['🐠', '🐟', '🐡', '🐙', '🦀']; // Peixes e itens para pescar
+  const fishEmojis = ['🐟', '🐡', '🐙', '🦀']; 
 
   useEffect(() => {
     return () => {
+      // Limpa o intervalo do jogo quando o componente é desmontado
       clearInterval(gameInterval.current);
     };
   }, []);
@@ -25,20 +26,23 @@ export default function JogoDaPescariaScreen() {
     setFishes([]);
     setGameStarted(true);
 
+
     gameInterval.current = setInterval(() => {
       const newFish = {
         id: Date.now(),
         emoji: fishEmojis[Math.floor(Math.random() * fishEmojis.length)],
-        x: Math.random() * (width - 50), // Posição X aleatória
-        y: new Animated.Value(-50), // Começa acima da tela
+        x: Math.random() * (width * 0.9 - 50), // Posição X aleatória dentro da fishingArea
+        y: new Animated.Value(-50), // Começa acima da área de pesca
       };
       setFishes(prevFishes => [...prevFishes, newFish]);
 
+      // Animação de queda do peixe dentro da área de pesca
       Animated.timing(newFish.y, {
-        toValue: height + 50, // Cai para fora da tela
+        toValue: height * 0.6 + 50, // Peixe cai para fora da fishingArea (altura da fishingArea + margem)
         duration: 5000, // Tempo de queda
-        useNativeDriver: true,
+        useNativeDriver: true, // Usa o driver nativo para melhor performance
       }).start(() => {
+        // Remove o peixe da lista se ele cair para fora da tela sem ser pego
         setFishes(prevFishes => prevFishes.filter(f => f.id !== newFish.id));
       });
     }, 1500); // Gera um novo peixe a cada 1.5 segundos
@@ -46,13 +50,13 @@ export default function JogoDaPescariaScreen() {
 
   const stopGame = () => {
     setGameStarted(false);
-    clearInterval(gameInterval.current);
-    Alert.alert('Fim de Jogo!', `Sua pontuação final: ${score}`);
+    clearInterval(gameInterval.current); // Para a geração de peixes
+    Alert.alert('Fim de Jogo!', `Sua pontuação final: ${score}`); // Exibe a pontuação final
   };
 
   const catchFish = (id) => {
-    setScore(score + 1);
-    setFishes(prevFishes => prevFishes.filter(fish => fish.id !== id));
+    setScore(score + 1); // Aumenta a pontuação
+    setFishes(prevFishes => prevFishes.filter(fish => fish.id !== id)); // Remove o peixe pego
   };
 
   return (
@@ -72,6 +76,7 @@ export default function JogoDaPescariaScreen() {
         </TouchableOpacity>
       )}
 
+      {/* Área do Jogo */}
       <View style={styles.fishingArea}>
         {fishes.map(fish => (
           <Animated.View
@@ -79,7 +84,8 @@ export default function JogoDaPescariaScreen() {
             style={{
               position: 'absolute',
               left: fish.x,
-              top: fish.y,
+              // Alterado para usar translateY para animação nativa
+              transform: [{ translateY: fish.y }],
             }}
           >
             <TouchableOpacity onPress={() => catchFish(fish.id)}>
