@@ -7,15 +7,15 @@ import { commonStyles } from '../constants/styles'; // Importa estilos comuns
 const { width } = Dimensions.get('window');
 
 const initialMenuItems = [
-  { id: '1', name: 'Pipoca', price: 'R$ 5', icon: '🍿', isFavorite: false },
-  { id: '2', name: 'Canjica', price: 'R$ 7', icon: '🥣', isFavorite: false },
-  { id: '3', name: 'Maçã do Amor', price: 'R$ 4', icon: '🍎', isFavorite: false },
-  { id: '4', name: 'Pamonha', price: 'R$ 6', icon: '🌽', isFavorite: false },
-  { id: '5', name: 'Quentão (sem álcool)', price: 'R$ 8', icon: '🍷', isFavorite: false },
-  { id: '6', name: 'Cachorro Quente', price: 'R$ 9', icon: '🌭', isFavorite: false },
-  { id: '7', name: 'Milho Cozido', price: 'R$ 6', icon: '🌽', isFavorite: false },
-  { id: '8', name: 'Paçoca', price: 'R$ 3', icon: '🥜', isFavorite: false },
+  { id: '1', name: 'Pipoca', price: 'R$ 5', icon: '🍿',ingrediente:'milho de pipoca, óleo e sal.', isFavorite: false },
+  { id: '3', name: 'Maçã do Amor', price: 'R$ 4', icon: '🍎',ingrediente:'maçã, açúcar, corante vermelho, vinagre e palitos de madeira.', isFavorite: false },
+  { id: '4', name: 'Pamonha', price: 'R$ 6', icon: '🌽',ingrediente:'milho verde, leite, açúcar (ou sal, se for salgada), manteiga e palha de milho.', isFavorite: false },
+  { id: '5', name: 'Quentão (sem álcool)', price: 'R$ 8', icon: '🍷',ingrediente:'cachaça, gengibre, açúcar, cravo, canela e casca de laranja.', isFavorite: false },
+  { id: '6', name: 'Cachorro Quente', price: 'R$ 9', icon: '🌭',ingrediente:'pão, salsicha, molho de tomate, cebola e batata palha (opcional).', isFavorite: false },
+  { id: '7', name: 'Milho Cozido', price: 'R$ 6', icon: '🌽',ingrediente:'espigas de milho e sal.', isFavorite: false },
+  { id: '8', name: 'Paçoca', price: 'R$ 3', icon: '🥜',ingrediente:'amendoim torrado, açúcar e farinha de mandioca (ou farinha de milho).', isFavorite: false },
 ];
+
 
 function MenuItem({ item, toggleFavorite }) {
   return (
@@ -26,7 +26,7 @@ function MenuItem({ item, toggleFavorite }) {
         <Text style={styles.menuItemPrice}>{item.price}</Text>
       </View>
       {/* Botão de informações */}
-      <TouchableOpacity onPress={() => Alert.alert('Ingredientes', `Detalhes para ${item.name}`)}>
+      <TouchableOpacity onPress={() => Alert.alert('Ingredientes', ` ${item.ingrediente}`)}>
         <Text style={styles.infoButton}>ℹ️</Text>
       </TouchableOpacity>
       {/* Botão de favorito */}
@@ -36,6 +36,8 @@ function MenuItem({ item, toggleFavorite }) {
     </View>
   );
 }
+
+
 
 export default function CardapioJuninoScreen() {
   const [menuItems, setMenuItems] = useState(initialMenuItems);
