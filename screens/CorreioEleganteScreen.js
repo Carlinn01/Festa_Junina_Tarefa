@@ -60,7 +60,7 @@ export default function CorreioEleganteScreen() {
         </TouchableOpacity>
       </View>
 
-      <Text style={styles.sectionTitle}>Mensagens Recebidas (Exemplo)</Text>
+      <Text style={styles.sectionTitle}>Mensagens Recebidas</Text>
       {sentMessages.length === 0 ? (
         <Text style={styles.noMessagesText}>Nenhuma mensagem enviada ainda. Que tal ser o primeiro? 😉</Text>
       ) : (

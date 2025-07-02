@@ -11,7 +11,6 @@ import { commonStyles } from './constants/styles';
 import CardapioJuninoScreen from './screens/CardapioJuninoScreen';
 import QuizJuninoScreen from './screens/QuizJuninoScreen';
 import CorreioEleganteScreen from './screens/CorreioEleganteScreen';
-import JogoDaPescariaScreen from './screens/JogoDaPescariaScreen';
 
 // 1. Tela Inicial (Home Screen)
 function HomeScreen({ navigation }) {
@@ -44,13 +43,6 @@ function HomeScreen({ navigation }) {
         onPress={() => navigation.navigate('Correio Elegante')}
       >
         <Text style={commonStyles.buttonText}>💌 Correio Elegante</Text>
-      </TouchableOpacity>
-
-      <TouchableOpacity
-        style={commonStyles.button}
-        onPress={() => navigation.navigate('Jogo da Pescaria')}
-      >
-        <Text style={commonStyles.buttonText}>🎣 Jogo da Pescaria</Text>
       </TouchableOpacity>
     </ScrollView>
   );
@@ -94,11 +86,6 @@ export default function App() {
           name="Correio Elegante"
           component={CorreioEleganteScreen}
           options={{ title: 'Seu Recado Junino! 💌' }}
-        />
-        <Stack.Screen
-          name="Jogo da Pescaria"
-          component={JogoDaPescariaScreen}
-          options={{ title: 'Pegue os Peixes! 🎣' }}
         />
       </Stack.Navigator>
     </NavigationContainer>
