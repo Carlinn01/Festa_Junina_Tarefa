@@ -1,10 +1,8 @@
-// screens/CorreioEleganteScreen.js
 import React, { useState } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, FlatList, Alert, Dimensions, TextInput, ScrollView } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
-import { commonStyles } from '../constants/styles'; // Importa estilos comuns
 
-const { width } = Dimensions.get('window');
+const { width, height } = Dimensions.get('window');
 
 export default function CorreioEleganteScreen() {
   const [recipient, setRecipient] = useState('');
@@ -29,10 +27,10 @@ export default function CorreioEleganteScreen() {
   };
 
   return (
-    <ScrollView contentContainerStyle={commonStyles.container}>
+    <ScrollView contentContainerStyle={styles.container}>
       <StatusBar style="light" />
-      <Text style={commonStyles.title}>💌 Correio Elegante Digital 💌</Text>
-      <Text style={commonStyles.subtitle}>Envie um recado para aquele "alguém" especial!</Text>
+      <Text style={styles.title}>💌 Correio Elegante Digital 💌</Text>
+      <Text style={styles.subtitle}>Envie um recado para aquele "alguém" especial!</Text>
 
       <View style={styles.inputCard}>
         <Text style={styles.inputLabel}>Para quem?</Text>
@@ -55,8 +53,8 @@ export default function CorreioEleganteScreen() {
           onChangeText={setMessage}
         />
 
-        <TouchableOpacity style={commonStyles.button} onPress={sendMessage}>
-          <Text style={commonStyles.buttonText}>Enviar Mensagem</Text>
+        <TouchableOpacity style={styles.button} onPress={sendMessage}>
+          <Text style={styles.buttonText}>Enviar Mensagem</Text>
         </TouchableOpacity>
       </View>
 
@@ -82,6 +80,30 @@ export default function CorreioEleganteScreen() {
 }
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#FFD700', // Fundo amarelo claro/dourado
+    alignItems: 'center',
+    justifyContent: 'flex-start', // Começa do topo para permitir scroll
+    paddingVertical: 20,
+    paddingHorizontal: 20,
+  },
+  title: {
+    fontSize: width * 0.07,
+    fontWeight: 'bold',
+    color: '#8B4513', // Marrom escuro
+    textAlign: 'center',
+    marginBottom: 10,
+    textShadowColor: 'rgba(0, 0, 0, 0.3)',
+    textShadowOffset: { width: 1, height: 1 },
+    textShadowRadius: 2,
+  },
+  subtitle: {
+    fontSize: width * 0.045,
+    color: '#A0522D', // Marrom médio
+    textAlign: 'center',
+    marginBottom: 20,
+  },
   inputCard: {
     backgroundColor: '#F5DEB3',
     padding: 20,
@@ -166,5 +188,26 @@ const styles = StyleSheet.create({
     color: '#A0522D',
     textAlign: 'center',
     marginTop: 10,
+  },
+  button: {
+    backgroundColor: '#8B4513', // Marrom escuro
+    paddingVertical: 12,
+    paddingHorizontal: 25,
+    borderRadius: 10,
+    marginVertical: 8,
+    width: '80%',
+    alignItems: 'center',
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.3,
+    shadowRadius: 5,
+    elevation: 8,
+    borderWidth: 2,
+    borderColor: '#A0522D', // Borda mais clara
+  },
+  buttonText: {
+    color: '#FFD700', // Dourado
+    fontSize: width * 0.045,
+    fontWeight: 'bold',
   },
 });
