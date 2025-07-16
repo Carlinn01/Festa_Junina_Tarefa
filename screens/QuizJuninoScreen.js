@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, Dimensions } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 
-const { width, height } = Dimensions.get('window'); // Pega as dimensões da tela
+const { width, height } = Dimensions.get('window');
 
 const quizQuestions = [
   {
@@ -68,7 +68,7 @@ export default function QuizJuninoScreen() {
         <Text style={styles.scoreText}>Sua pontuação: {score} de {quizQuestions.length}</Text>
         <Text style={styles.subtitle}>
           {score === quizQuestions.length
-            ? 'Arrasou! Você é um verdadeiro caipira! '
+            ? 'Perfeito! '
             : score >= quizQuestions.length / 2
             ? 'Muito bem! Quase lá! '
             : 'Continue tentando para ir melhor! '}

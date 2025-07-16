@@ -5,6 +5,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 
 import CardapioJuninoScreen from './screens/CardapioJuninoScreen';
 import QuizJuninoScreen from './screens/QuizJuninoScreen';
+import SobreScreen from './screens/SobreScreen';  // Importando a tela Sobre
 
 function HomeScreen({ navigation }) {
   return (
@@ -30,6 +31,14 @@ function HomeScreen({ navigation }) {
       >
         <Text style={styles.buttonText}>🤔 Quiz Junino</Text>
       </TouchableOpacity>
+
+      {/* Adicionando o botão "Sobre" */}
+      <TouchableOpacity
+        style={styles.button}
+        onPress={() => navigation.navigate('Sobre')}
+      >
+        <Text style={styles.buttonText}>ℹ️ Sobre</Text>
+      </TouchableOpacity>
     </ScrollView>
   );
 }
@@ -47,9 +56,10 @@ export default function App() {
           headerTitleAlign: 'center',
         }}
       >
-        <Stack.Screen name="Home" component={HomeScreen} options={{ title: 'Festa Junina da Escola' }} />
+        <Stack.Screen name="Home" component={HomeScreen} options={{ title: 'Festa Junina do Ifc' }} />
         <Stack.Screen name="Cardápio Junino" component={CardapioJuninoScreen} options={{ title: 'Nosso Cardápio 🌽' }} />
         <Stack.Screen name="Quiz Junino" component={QuizJuninoScreen} options={{ title: 'Teste seus Conhecimentos! 🤔' }} />
+        <Stack.Screen name="Sobre" component={SobreScreen} options={{ title: 'Sobre a Festa Junina' }} />
       </Stack.Navigator>
     </NavigationContainer>
   );
@@ -76,7 +86,7 @@ const styles = StyleSheet.create({
     borderColor: '#8B4513',
   },
   title: {
-    fontSize: 28, 
+    fontSize: 28,
     fontWeight: 'bold',
     color: '#8B4513',
     textAlign: 'center',
@@ -86,7 +96,7 @@ const styles = StyleSheet.create({
     textShadowRadius: 2,
   },
   subtitle: {
-    fontSize: 20, 
+    fontSize: 20,
     color: '#A0522D',
     textAlign: 'center',
     marginBottom: 20,
@@ -109,7 +119,7 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     color: '#FFD700',
-    fontSize: 22, 
+    fontSize: 22,
     fontWeight: 'bold',
   },
 });

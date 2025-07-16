@@ -64,7 +64,7 @@ const styles = StyleSheet.create({
   },
   flatListContent: {
     paddingBottom: 20,
-    width: width * 0.9, //mantem o tamanho padrão dependendo da tela
+    width: width * 0.9, 
   },
   menuItem: {
     backgroundColor: '#F5DEB3',
