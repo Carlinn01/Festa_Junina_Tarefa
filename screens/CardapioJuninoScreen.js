@@ -3,14 +3,14 @@ import { View, Text, TouchableOpacity, StyleSheet, FlatList, Alert, Dimensions }
 import { StatusBar } from 'expo-status-bar';
 
 const { width, height } = Dimensions.get('window');
+
 const initialMenuItems = [
-  { id: '1', name: 'Pipoca', price: 'R$ 5', icon: '🍿', ingrediente:'milho de pipoca, óleo e sal.', isFavorite: false },
-  { id: '3', name: 'Maçã do Amor', price: 'R$ 4', icon: '🍎', ingrediente:'maçã, açúcar, corante vermelho, vinagre e palitos de madeira.' },
-  { id: '4', name: 'Pamonha', price: 'R$ 6', icon: '🌽', ingrediente:'milho verde, leite, açúcar (ou sal, se for salgada), manteiga e palha de milho.' },
-  { id: '5', name: 'Quentão (sem álcool)', price: 'R$ 8', icon: '🍷', ingrediente:'cachaça, gengibre, açúcar, cravo, canela e casca de laranja.' },
-  { id: '6', name: 'Cachorro Quente', price: 'R$ 9', icon: '🌭', ingrediente:'pão, salsicha, molho de tomate, cebola e batata palha (opcional).' },
-  { id: '7', name: 'Milho Cozido', price: 'R$ 6', icon: '🌽', ingrediente:'espigas de milho e sal.' },
-  { id: '8', name: 'Paçoca', price: 'R$ 3', icon: '🥜', ingrediente:'amendoim torrado, açúcar e farinha de mandioca (ou farinha de milho).' },
+  { name: 'Pipoca', price: 'R$ 5', icon: '🍿', ingrediente:'milho de pipoca, óleo e sal.'},
+  { name: 'Maçã do Amor', price: 'R$ 4', icon: '🍎', ingrediente:'maçã, açúcar, corante vermelho, vinagre e palitos de madeira.' },
+  { name: 'Quentão (sem álcool)', price: 'R$ 8', icon: '🍷', ingrediente:'cachaça, gengibre, açúcar, cravo, canela e casca de laranja.' },
+  { name: 'Cachorro Quente', price: 'R$ 9', icon: '🌭', ingrediente:'pão, salsicha, molho de tomate, cebola e batata palha (opcional).' },
+  { name: 'Milho Cozido', price: 'R$ 6', icon: '🌽', ingrediente:'espigas de milho e sal.' },
+  { name: 'Paçoca', price: 'R$ 3', icon: '🥜', ingrediente:'amendoim torrado, açúcar e farinha de mandioca (ou farinha de milho).' },
 ];
 
 function MenuItem({ item }) {
@@ -30,12 +30,11 @@ function MenuItem({ item }) {
 
 export default function CardapioJuninoScreen() {
   const [menuItems] = useState(initialMenuItems);
-
   return (
     <View style={styles.container}>
       <StatusBar style="light" />
-      <Text style={styles.title}>Cardápio da Roça! 😋</Text>
-      <Text style={styles.subtitle}>Delícias para você se esbaldar!</Text>
+      <Text style={styles.titulo}>Cardápio da Festa Junina</Text>
+            <Text style={styles.subtitulo}>Experimente:</Text>
       <FlatList
         data={menuItems}
         renderItem={({ item }) => <MenuItem item={item} />}
@@ -47,70 +46,56 @@ export default function CardapioJuninoScreen() {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#FFD700', // Fundo amarelo claro/dourado
+    backgroundColor: '#FFD700', 
     alignItems: 'center',
-    justifyContent: 'flex-start', // Começa do topo para permitir scroll
     paddingVertical: 20,
     paddingHorizontal: 20,
   },
-  title: {
-    fontSize: width * 0.07,
+  titulo: {
+    fontSize: 32,
     fontWeight: 'bold',
-    color: '#8B4513', // Marrom escuro
+    color: '#8B4513',
     textAlign: 'center',
-    marginBottom: 10,
-    textShadowColor: 'rgba(0, 0, 0, 0.3)',
-    textShadowOffset: { width: 1, height: 1 },
-    textShadowRadius: 2,
   },
-  subtitle: {
-    fontSize: width * 0.045,
-    color: '#A0522D', // Marrom médio
+  subtitulo: {
+    fontSize: 22,
+    color: '#A0522D',
     textAlign: 'center',
-    marginBottom: 20,
   },
   flatListContent: {
     paddingBottom: 20,
-    width: width * 0.9,
+    width: width * 0.9, //mantem o tamanho padrão dependendo da tela
   },
   menuItem: {
-    backgroundColor: '#F5DEB3', // Palha
+    backgroundColor: '#F5DEB3',
     padding: 15,
     borderRadius: 10,
     marginVertical: 8,
     flexDirection: 'row',
     alignItems: 'center',
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.2,
-    shadowRadius: 3,
     elevation: 5,
     borderWidth: 1,
     borderColor: '#D2B48C',
   },
   menuItemIcon: {
-    fontSize: width * 0.08,
+    fontSize: 50,
     marginRight: 15,
   },
   menuItemDetails: {
     flex: 1,
   },
   menuItemName: {
-    fontSize: width * 0.05,
+    fontSize: 20,
     fontWeight: 'bold',
     color: '#8B4513',
   },
   menuItemPrice: {
-    fontSize: width * 0.04,
+    fontSize: 20,
     color: '#A0522D',
   },
   infoButton: {
-    fontSize: width * 0.06,
-    color: '#4682B4', // Azul
-    marginLeft: 10,
-  },
-  favoriteButton: {
-    fontSize: width * 0.06,
+    fontSize: 30,
+    color: '#4682B4', 
     marginLeft: 10,
   },
 });

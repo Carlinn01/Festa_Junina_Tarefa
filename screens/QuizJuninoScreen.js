@@ -64,14 +64,14 @@ export default function QuizJuninoScreen() {
     return (
       <View style={styles.container}>
         <StatusBar style="light" />
-        <Text style={styles.title}>🎉 Quiz Junino Finalizado! 🎉</Text>
+        <Text style={styles.title}> Quiz Junino Finalizado! </Text>
         <Text style={styles.scoreText}>Sua pontuação: {score} de {quizQuestions.length}</Text>
         <Text style={styles.subtitle}>
           {score === quizQuestions.length
-            ? 'Arrasou! Você é um verdadeiro caipira! 🤠'
+            ? 'Arrasou! Você é um verdadeiro caipira! '
             : score >= quizQuestions.length / 2
-            ? 'Muito bem! Quase lá! 😊'
-            : 'Continue tentando para se tornar um expert junino! 🤔'}
+            ? 'Muito bem! Quase lá! '
+            : 'Continue tentando para ir melhor! '}
         </Text>
         <TouchableOpacity style={styles.button} onPress={resetQuiz}>
           <Text style={styles.buttonText}>Jogar Novamente</Text>
@@ -85,7 +85,7 @@ export default function QuizJuninoScreen() {
   return (
     <View style={styles.container}>
       <StatusBar style="light" />
-      <Text style={styles.title}>🤔 Quiz Junino 🤔</Text>
+      <Text style={styles.title}> Quiz Junino </Text>
       <Text style={styles.questionNumber}>Pergunta {currentQuestionIndex + 1}/{quizQuestions.length}</Text>
       <View style={styles.questionCard}>
         <Text style={styles.questionText}>{currentQuestion.question}</Text>
@@ -111,16 +111,15 @@ export default function QuizJuninoScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#FFD700', // Fundo amarelo claro/dourado
+    backgroundColor: '#FFD700', 
     alignItems: 'center',
-    justifyContent: 'flex-start', // Começa do topo para permitir scroll
     paddingVertical: 20,
     paddingHorizontal: 20,
   },
   title: {
-    fontSize: width * 0.07,
+    fontSize: 30,
     fontWeight: 'bold',
-    color: '#8B4513', // Marrom escuro
+    color: '#8B4513', 
     textAlign: 'center',
     marginBottom: 10,
     textShadowColor: 'rgba(0, 0, 0, 0.3)',
@@ -128,19 +127,19 @@ const styles = StyleSheet.create({
     textShadowRadius: 2,
   },
   subtitle: {
-    fontSize: width * 0.045,
-    color: '#A0522D', // Marrom médio
+    fontSize: 20,
+    color: '#A0522D', 
     textAlign: 'center',
     marginBottom: 20,
   },
   scoreText: {
-    fontSize: width * 0.06,
+    fontSize: 20,
     fontWeight: 'bold',
     color: '#8B4513',
     marginBottom: 15,
   },
   questionNumber: {
-    fontSize: width * 0.04,
+    fontSize: 20,
     color: '#A0522D',
     marginBottom: 15,
   },
@@ -159,14 +158,14 @@ const styles = StyleSheet.create({
     borderColor: '#D2B48C',
   },
   questionText: {
-    fontSize: width * 0.05,
+    fontSize:20,
     fontWeight: 'bold',
     color: '#8B4513',
     textAlign: 'center',
     marginBottom: 20,
   },
   optionButton: {
-    backgroundColor: '#FFFAF0', // Branco sujo
+    backgroundColor: '#FFFAF0', 
     paddingVertical: 12,
     paddingHorizontal: 20,
     borderRadius: 8,
@@ -177,20 +176,20 @@ const styles = StyleSheet.create({
     borderColor: '#D2B48C',
   },
   optionText: {
-    fontSize: width * 0.045,
+    fontSize: 20,
     color: '#A0522D',
     fontWeight: '500',
   },
   correctOption: {
-    backgroundColor: '#90EE90', // Verde claro
-    borderColor: '#3CB371', // Verde médio
+    backgroundColor: '#90EE90', 
+    borderColor: '#3CB371', 
   },
   incorrectOption: {
-    backgroundColor: '#FFB6C1', // Rosa claro
-    borderColor: '#DC143C', // Vermelho forte
+    backgroundColor: '#FFB6C1',
+    borderColor: '#DC143C', 
   },
   button: {
-    backgroundColor: '#8B4513', // Marrom escuro
+    backgroundColor: '#8B4513', 
     paddingVertical: 12,
     paddingHorizontal: 25,
     borderRadius: 10,
@@ -203,11 +202,11 @@ const styles = StyleSheet.create({
     shadowRadius: 5,
     elevation: 8,
     borderWidth: 2,
-    borderColor: '#A0522D', // Borda mais clara
+    borderColor: '#A0522D', 
   },
   buttonText: {
-    color: '#FFD700', // Dourado
-    fontSize: width * 0.045,
+    color: '#FFD700', 
+    fontSize: 20,
     fontWeight: 'bold',
   },
 });
